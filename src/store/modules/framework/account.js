@@ -1,5 +1,5 @@
 import util from "@/lib/util";
-import config from "./../config";
+
 import {
   AccountOrPhoneLogin,
   SMSCaptchaLogin,

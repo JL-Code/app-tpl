@@ -5,14 +5,17 @@ function UTF8BOMPlugin(options) {
   let defaults = { addBOM: false, fileMask: /\.(html|htm|css|js|map)$/ };
   let opts = Object.assign(defaults, options);
 
-  // console.log("调用: " + Date.now())
-  // console.log(opts)
+  console.log("调用: " + Date.now())
+  console.log(opts)
 
   this.fileMask = opts.fileMask;
   this.addBOM = opts.addBOM;
 }
 
 UTF8BOMPlugin.prototype.apply = function (compiler) {
+  console.warn("==================== UTF8BOMPlugin current this ====================");
+  console.log(this)
+  console.log(this.fileMask)
   var self = this;
   compiler.hooks.done.tap("utf8bom", function (Stats, callback) {
     var files = Stats.compilation.assets;
@@ -33,7 +36,7 @@ UTF8BOMPlugin.prototype.apply = function (compiler) {
       var buff = fs.readFileSync(path);
 
       if (isAdd) {
-        // console.log("add bom:" + fileName);
+        console.log("add bom:" + fileName);
         if (
           buff.length < 3 ||
           buff[0].toString(16).toLowerCase() != "ef" ||
@@ -47,7 +50,7 @@ UTF8BOMPlugin.prototype.apply = function (compiler) {
           });
         }
       } else {
-        // console.log("remove bom" + fileName);
+        console.log("remove bom" + fileName);
         if (
           buff.length >= 3 &&
           buff[0].toString(16).toLowerCase() == "ef" &&

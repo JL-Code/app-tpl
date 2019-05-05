@@ -1,5 +1,5 @@
 
-import _ from './node_modules/lodash'
+import _ from 'lodash'
 
 const DATABASE = "database";
 
