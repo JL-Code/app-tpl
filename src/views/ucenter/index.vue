@@ -61,6 +61,14 @@ import RouterMixin from "@/mixins/router";
 export default {
   name: "UCenter",
   mixins: [RouterMixin],
+  data() {
+    return {
+      about: {
+        Contact: "186-9655-5281",
+        Description: "授权使用：铁建地产西南区域公司<br>系统名称：衡泽ERP - 计划管理系统"
+      }
+    };
+  },
   computed: {
     ...mapState("framework/user", {
       info: state => state.info
