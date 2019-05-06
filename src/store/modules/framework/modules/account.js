@@ -190,8 +190,6 @@ async function sigin({ dispatch }, { token, vm, route }) {
   );
 
   // TODO: 临时放在账号登录后加载系统关于信息
-  // dispatch("framework/sys/set", {}, { root: true });
-
   // 用户登录后从持久化数据加载一系列的设置
   await dispatch("load");
 

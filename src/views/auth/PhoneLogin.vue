@@ -24,7 +24,7 @@
       </z-button-group>
       <more-auth></more-auth>
     </div>
-    <copyright slot="footer" :desc="about.Description" :contact="about.Contact"></copyright>
+    <!-- <copyright slot="footer" :desc="about.Description" :contact="about.Contact"></copyright> -->
   </z-page>
 </template>
 
@@ -67,11 +67,6 @@ export default {
       },
       loading: false
     };
-  },
-  computed: {
-    ...mapState("framework/sys", {
-      about: state => state.about
-    })
   },
   methods: {
     ...mapActions("framework/account", ["login"]),

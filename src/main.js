@@ -8,6 +8,7 @@ import VueAxios from "vue-axios";
 import Axios from "./plugins/axios";
 import "vant/lib/index.css";
 
+import "./layouts/_globals";
 import "./packages/_globals";
 
 Vue.use(Vant);
@@ -22,8 +23,8 @@ new Vue({
     // 获取系统信息
     // this.$store.dispatch("framework/sys/fetchAbout");
     // 用户登录后从数据库加载一系列的设置
-    // this.$store.dispatch("framework/account/load");
+    this.$store.dispatch("framework/account/load");
     // 获取并记录用户 UA
-    // this.$store.commit("framework/ua/get");
+    this.$store.commit("framework/ua/get");
   }
 }).$mount("#app");

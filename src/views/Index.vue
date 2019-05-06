@@ -23,7 +23,7 @@
       style="height:calc(100% - 50px);"
       class="framework-cards"
       :pullDownConfig="pullDownRefresh"
-      @pullingDown="getHomeDataCollection"
+      @pullingDown="fetchData"
       :pullUp="false"
     >
       <!-- 快捷方式入口 -->
@@ -258,15 +258,11 @@ export default {
     }
   },
   mounted() {
-    this.getHomeDataCollection();
+    this.fetchData();
   },
   methods: {
-    ...mapMutations("framework/navigation", [
-      "setMyTaskActive",
-      "setManagementActive"
-    ]),
     //获取首页数据集
-    getHomeDataCollection() {
+    fetchData() {
       const _url = "/api/OverallPlan/HomeDataCollection";
       this.$http
         .get(_url)
@@ -295,25 +291,10 @@ export default {
           this.$toast.fail("加载失败");
         });
     },
-    //穿透
-    goToTask(active) {
-      this.$router.push({ name: "Task" });
-      this.setMyTaskActive(active);
-    },
-    goToManagement(active) {
-      this.$router.push({ name: "Management" });
-      this.setManagementActive(active);
-    },
     urlquery(para) {
       var ret = JSON.parse(para);
       this.setMyTaskActive(ret.myTaskActive);
       this.setManagementActive(ret.managementActive);
-    },
-    goToTaskInf(parameter) {
-      this.$router.push({
-        name: parameter.Route,
-        query: JSON.parse(parameter.Parameter)
-      });
     },
     pierceThroughMsg() {
       this.$router.push({

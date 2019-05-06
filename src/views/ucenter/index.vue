@@ -65,9 +65,6 @@ export default {
     ...mapState("framework/user", {
       info: state => state.info
     }),
-    ...mapState("framework/sys", {
-      about: state => state.about
-    }),
     userName() {
       if (!this.info.UserName) {
         return "";
