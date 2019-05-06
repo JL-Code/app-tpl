@@ -37,7 +37,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions("ppm/account", ["oauth2"]),
+    ...mapActions("framework/account", ["oauth2"]),
     goToLogin() {
       this.$toast.clear();
       this.$router.push({ name: "Login" });

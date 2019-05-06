@@ -58,12 +58,10 @@
 import { mapState } from "vuex";
 import util from "@/lib/util";
 import routerMixin from "@/mixins/router";
-import CaptchaField from "@/components/captcha-field";
 import { Promise } from "q";
 export default {
   name: "Password",
   mixins: [routerMixin],
-  components: { CaptchaField },
   data() {
     return {
       form: {
@@ -78,7 +76,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("ppm/user", {
+    ...mapState("framework/user", {
       userInfo: state => state.info
     }),
     btnDisabled() {

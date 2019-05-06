@@ -28,14 +28,7 @@
         >登录</van-button>
       </z-button-group>
      <more-auth></more-auth>
-      <div class="copyright copyright--fixed">
-      <a class="copyright__contact" :href="`tel:${about.Contact}`">
-        <p>服务咨询电话：{{about.Contact}}</p>
-        <img src="../../assets/ucenter/电话.png">
-      </a>
     </div>
-    </div>
-    <copyright v-show="visible" :desc="about.Description" :contact="about.Contact"></copyright>
   </div>
 </template>
 
@@ -72,15 +65,8 @@ export default {
       }
     };
   },
-  computed: {
-    ...mapState("ppm/sys", {
-      about: state => state.about
-    })
-  },
-  created() {},
   methods: {
-    ...mapActions("ppm/account", ["login"]),
-    ...mapActions("ppm/sys", ["set"]),
+    ...mapActions("framework/account", ["login"]),
     async passLoginAsync() {
       var valid = await this.isValidAsync_(this.form);
       if (!valid) {

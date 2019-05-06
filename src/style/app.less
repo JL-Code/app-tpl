@@ -1,0 +1,41 @@
+html,
+body,
+#app {
+  height: 100%;
+  font-size: 14px;
+}
+html,
+body {
+  -webkit-user-select: none; /* 禁止选中文本（如无文本选中需求，此为必选项） */
+  user-select: none;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  background-color: #f8f8f8;
+}
+// fix
+input,
+textarea {
+  // refs:https://github.com/airyland/vux/issues/2443
+  -webkit-transfrom: translateZ(0px);
+  position: relative;
+}
+a,
+img {
+  -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
+}
+
+// button
+.van-button.button--primary {
+  width: 100%;
+  background: #67cbcc;
+  color: #fff;
+  border-radius: 5px;
+}
+
+//图标字体
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 26px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

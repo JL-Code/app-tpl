@@ -1,22 +1,18 @@
 import Vue from "vue";
-import VueAxios from "vue-axios";
-import Axios from "./plugins/axios";
 import App from "./App.vue";
-import Vant from "vant";
 import router from "./routes";
 import store from "./store";
-import ValidatorPlugin from "./plugins/validator";
-
-import "./packages/_globals";
-import "./layouts/_globals";
-
+import Vant from "vant";
+import Validator from "./plugins/validator";
+import VueAxios from "vue-axios";
+import Axios from "./plugins/axios";
 import "vant/lib/index.css";
 
-Vue.config.productionTip = false;
+import "./packages/_globals";
 
 Vue.use(Vant);
 Vue.use(VueAxios, Axios);
-Vue.use(ValidatorPlugin);
+Vue.use(Validator);
 
 new Vue({
   router,

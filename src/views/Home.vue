@@ -34,7 +34,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("ppm/navigation", {
+    ...mapState("framework/navigation", {
       topNavActive: state => state.topNavActive
     })
   }

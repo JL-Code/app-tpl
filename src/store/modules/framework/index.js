@@ -1,14 +1,12 @@
-import db from './db'
-import ua from './ua'
-import user from './user'
-import account from './account'
+const files = require.context("./modules", false, /\.js$/);
 
-/**
- * @description 将多个子模块拼接成为一个子模块对象
- */
+const modules = {};
+
+files.keys().forEach(key => {
+  modules[key.replace(/(\.\/|\.js)/g, "")] = files(key).default;
+});
+
 export default {
-    db,
-    ua,
-    user,
-    account
-}
+  namespaced: true,
+  modules
+};

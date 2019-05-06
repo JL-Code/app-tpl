@@ -83,7 +83,7 @@ export default {
         util.cookies.remove("token");
         util.cookies.remove("uuid");
 
-        dispatch("ppm/db/databaseClear", {}, { root: true });
+        dispatch("framework/db/databaseClear", {}, { root: true });
 
         // 跳转路由
         vm.$router.push({
@@ -92,18 +92,18 @@ export default {
       }
       // 判断是否需要确认
       if (confirm) {
-        // commit("ppm/gray/set", true, { root: true });
+        // commit("framework/gray/set", true, { root: true });
         vm.$dialog
           .confirm({
             title: "确认操作",
             message: "退出当前登录吗？"
           })
           .then(() => {
-            // commit("ppm/gray/set", false, { root: true });
+            // commit("framework/gray/set", false, { root: true });
             logout();
           })
           .catch(() => {
-            // commit("ppm/gray/set", false, { root: true });
+            // commit("framework/gray/set", false, { root: true });
             // vm.$toast("放弃退出登录");
           });
       } else {
@@ -128,7 +128,7 @@ export default {
           if (res.ErrCode !== 0) {
             throw new Error(res.ErrMsg);
           }
-          dispatch("ppm/user/unBindWeixin", null, { root: true });
+          dispatch("framework/user/unBindWeixin", null, { root: true });
           vm.$toast({
             message: "解除绑定成功",
             duration: 1500
@@ -146,10 +146,10 @@ export default {
      * @param {Object} state vuex state
      */
     load({ commit, dispatch }) {
-      // console.debug("ppm/account/load");
+      // console.debug("framework/account/load");
       return new Promise(async resolve => {
         // DB -> store 加载用户信息
-        await dispatch("ppm/user/load", null, { root: true });
+        await dispatch("framework/user/load", null, { root: true });
         // end
         resolve();
       });
@@ -181,7 +181,7 @@ async function sigin({ dispatch }, { token, vm, route }) {
 
   // 设置 vuex 用户信息
   await dispatch(
-    "ppm/user/set",
+    "framework/user/set",
     {
       userId: result.userid,
       ...user
@@ -190,7 +190,7 @@ async function sigin({ dispatch }, { token, vm, route }) {
   );
 
   // TODO: 临时放在账号登录后加载系统关于信息
-  // dispatch("ppm/sys/set", {}, { root: true });
+  // dispatch("framework/sys/set", {}, { root: true });
 
   // 用户登录后从持久化数据加载一系列的设置
   await dispatch("load");

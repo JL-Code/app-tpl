@@ -58,7 +58,7 @@ export default {
     this.form.uid = this.query_.corpUserId;
   },
   methods: {
-    ...mapActions("ppm/account", ["oauth2"]),
+    ...mapActions("framework/account", ["oauth2"]),
     async bindAccount() {
       var valid = await this.isValidAsync_(this.form);
       if (!valid) {

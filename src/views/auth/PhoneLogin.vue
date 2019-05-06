@@ -32,7 +32,6 @@
 import util from "@/lib/util";
 import validator from "@/mixins/validator";
 import Helper from "./mixins/helper";
-import CaptchaField from "../../components/captcha-field";
 import MoreAuth from "./components/MoreAuth";
 import Copyright from "./components/Copyright";
 import { mapState, mapActions } from "vuex";
@@ -40,7 +39,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "PhoneLogin",
   mixins: [validator, Helper],
-  components: { CaptchaField, MoreAuth, Copyright },
+  components: { MoreAuth, Copyright },
   data() {
     return {
       form: {
@@ -70,12 +69,12 @@ export default {
     };
   },
   computed: {
-    ...mapState("ppm/sys", {
+    ...mapState("framework/sys", {
       about: state => state.about
     })
   },
   methods: {
-    ...mapActions("ppm/account", ["login"]),
+    ...mapActions("framework/account", ["login"]),
     async sendSmsAsync() {
       try {
         if (!util.validatePhone(this.form.phoneNumber)) {

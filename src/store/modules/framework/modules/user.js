@@ -18,11 +18,11 @@ export default {
       return new Promise(async resolve => {
         // store 赋值
         // commit("set", info);
-        // console.debug("ppm/user/set", info);
+        // console.debug("framework/user/set", info);
         state.info = info;
         // db 持久化
         await dispatch(
-          "ppm/db/set",
+          "framework/db/set",
           {
             dbName: DATABASE,
             path: "user.info",
@@ -47,11 +47,11 @@ export default {
      * @param {Object} state vuex state
      */
     load({ state, dispatch }) {
-      // console.debug("ppm/user/load", state);
+      // console.debug("framework/user/load", state);
       return new Promise(async resolve => {
         // store 赋值
         state.info = await dispatch(
-          "ppm/db/get",
+          "framework/db/get",
           {
             dbName: DATABASE,
             path: "user.info",
@@ -60,7 +60,7 @@ export default {
           },
           { root: true }
         );
-        // console.debug("ppm/db/get ==> state:", state);
+        // console.debug("framework/db/get ==> state:", state);
         // end
         resolve();
       });

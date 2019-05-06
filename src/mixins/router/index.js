@@ -20,7 +20,7 @@ export default {
         next(vm => {
             try {
                 if (_index > -1) {
-                    vm.$store.commit("ppm/navigation/setTopNavActive", _index);
+                    vm.$store.commit("framework/navigation/setTopNavActive", _index);
                 }
             } catch (error) {
                 console.warn(error.message);

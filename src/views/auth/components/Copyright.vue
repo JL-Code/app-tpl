@@ -23,7 +23,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("ppm/ua", ["isAndroid", "isIOS"])
+    ...mapGetters("framework/ua", ["isAndroid", "isIOS"])
   },
   mounted() {
     this.fixKeyboard();

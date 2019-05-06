@@ -1,8 +1,8 @@
 <template>
   <div style="height:100%">
-    <div class="ppm-index">
-      <div class="ppm-index--bg"></div>
-      <div class="ppm-index__hd">
+    <div class="framework-index">
+      <div class="framework-index--bg"></div>
+      <div class="framework-index__hd">
         <div class="hello__box">
           <z-avatar size="45" v-if="userInfo.Avatar!='' && userInfo.Avatar!=null">
             <img :src="userInfo.Avatar" alt>
@@ -21,13 +21,13 @@
     <scroll
       ref="scroll"
       style="height:calc(100% - 50px);"
-      class="ppm-cards"
+      class="framework-cards"
       :pullDownConfig="pullDownRefresh"
       @pullingDown="getHomeDataCollection"
       :pullUp="false"
     >
       <!-- 快捷方式入口 -->
-      <z-card class="ppm-card__item" style="height:222px;border-radius: 8px;">
+      <z-card class="framework-card__item" style="height:222px;border-radius: 8px;">
         <van-loading
           v-if="entranceLoading"
           type="spinner"
@@ -55,7 +55,7 @@
         </van-swipe>
       </z-card>
       <!-- 我负责的任务 -->
-      <z-card class="ppm-card__item" style="max-height:166px;">
+      <z-card class="framework-card__item" style="max-height:166px;">
         <van-loading
           v-if="responsibleLoading"
           type="spinner"
@@ -74,46 +74,46 @@
           </div>
           <div v-if="responsibleTask.length">
             <div
-              class="ppm-index__list-row"
+              class="framework-index__list-row"
               v-for="(task, index) in responsibleTask"
               :key="index"
               @click="goToTaskInf(task)"
             >
               <div v-if="task.WarningColor=='red'" class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
-                  <van-tag round type="danger" class="ppm-index__list-tag">{{task.RightLabel}}</van-tag>
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
+                  <van-tag round type="danger" class="framework-index__list-tag">{{task.RightLabel}}</van-tag>
                   <van-icon name="arrow"/>
                 </div>
               </div>
               <div v-else-if="task.WarningColor=='yellow'" class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
                   <van-tag
                     round
                     type="danger"
                     color="yellow"
-                    class="ppm-index__list-tag"
+                    class="framework-index__list-tag"
                     text-color="black"
                   >{{task.RightLabel}}</van-tag>
                   <van-icon name="arrow"/>
                 </div>
               </div>
               <div v-else-if="task.WarningColor=='white'" class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
                   {{task.RightLabel}}
                   <van-icon name="arrow"/>
                 </div>
               </div>
               <div v-else class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
                   <van-tag
                     round
                     type="danger"
                     :color="task.WarningColor"
-                    class="ppm-index__list-tag"
+                    class="framework-index__list-tag"
                     text-color="black"
                   >{{task.RightLabel}}</van-tag>
                   <van-icon name="arrow"/>
@@ -125,7 +125,7 @@
         </template>
       </z-card>
       <!-- 我关注的任务 -->
-      <z-card class="ppm-card__item" style="max-height:166px;">
+      <z-card class="framework-card__item" style="max-height:166px;">
         <van-loading v-if="watchLoading" type="spinner" style="margin:0 auto;line-height:200px;"/>
         <template v-else>
           <div slot="header" class="space-around" @click="goToManagement(4)">
@@ -140,46 +140,46 @@
           </div>
           <div v-if="attentionTask.length">
             <div
-              class="ppm-index__list-row"
+              class="framework-index__list-row"
               v-for="(task, index) in attentionTask"
               :key="index"
               @click="goToTaskInf(task)"
             >
               <div v-if="task.WarningColor=='red'" class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
-                  <van-tag round type="danger" class="ppm-index__list-tag">{{task.RightLabel}}</van-tag>
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
+                  <van-tag round type="danger" class="framework-index__list-tag">{{task.RightLabel}}</van-tag>
                   <van-icon name="arrow"/>
                 </div>
               </div>
               <div v-else-if="task.WarningColor=='yellow'" class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
                   <van-tag
                     round
                     type="danger"
                     text-color="black"
                     color="yellow"
-                    class="ppm-index__list-tag"
+                    class="framework-index__list-tag"
                   >{{task.RightLabel}}</van-tag>
                   <van-icon name="arrow"/>
                 </div>
               </div>
               <div v-else-if="task.WarningColor=='white'" class="space-around">
-                <div class="ppm-index__row-title">{{task.RightLabel}}</div>
-                <div class="ppm-index__row-extend">
+                <div class="framework-index__row-title">{{task.RightLabel}}</div>
+                <div class="framework-index__row-extend">
                   {{task.RightLabel}}
                   <van-icon name="arrow"/>
                 </div>
               </div>
               <div v-else class="space-around">
-                <div class="ppm-index__row-title">{{task.TaskName}}</div>
-                <div class="ppm-index__row-extend">
+                <div class="framework-index__row-title">{{task.TaskName}}</div>
+                <div class="framework-index__row-extend">
                   <van-tag
                     round
                     type="danger"
                     :color="task.WarningColor"
-                    class="ppm-index__list-tag"
+                    class="framework-index__list-tag"
                     text-color="black"
                   >{{task.RightLabel}}</van-tag>
                   <van-icon name="arrow"/>
@@ -226,7 +226,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("ppm/user", {
+    ...mapState("framework/user", {
       userInfo: state => state.info
     }),
     hello() {
@@ -261,7 +261,7 @@ export default {
     this.getHomeDataCollection();
   },
   methods: {
-    ...mapMutations("ppm/navigation", [
+    ...mapMutations("framework/navigation", [
       "setMyTaskActive",
       "setManagementActive"
     ]),
@@ -327,16 +327,16 @@ export default {
 
 <style lang="less" >
 @import url("../style/base/fn.less");
-.ppm-index {
+.framework-index {
   position: relative;
 }
-.ppm-index__hd {
+.framework-index__hd {
   display: flex;
   height: 50px;
   width: 100%;
   color: #ffffff;
 }
-.ppm-index--bg {
+.framework-index--bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -421,7 +421,7 @@ export default {
 .van-cell__value {
   width: 5%;
 }
-.ppm-index__list-row {
+.framework-index__list-row {
   position: relative;
   height: 40px;
   line-height: 40px;
@@ -433,14 +433,14 @@ export default {
     display: none;
   }
 }
-.ppm-index__row-title {
+.framework-index__row-title {
   width: 65%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
 }
-.ppm-index__row-msg--overdue {
+.framework-index__row-msg--overdue {
   width: 40px;
   height: 20px;
   background-color: red;
@@ -451,7 +451,7 @@ export default {
   text-align: center;
   line-height: 20px;
 }
-.ppm-index__row-msg--warning {
+.framework-index__row-msg--warning {
   width: 40px;
   height: 20px;
   background-color: yellow;
@@ -462,19 +462,19 @@ export default {
   text-align: center;
   line-height: 20px;
 }
-.ppm-index__row-extend {
+.framework-index__row-extend {
   width: 35%;
   text-align: right;
   position: relative;
   font-size: 12px;
 }
 
-.ppm-cards {
+.framework-cards {
   padding: 0 8px 8px 8px;
   display: flex;
   flex-direction: column;
 }
-.ppm-card__item {
+.framework-card__item {
   font-size: 14px;
   margin-bottom: 5px;
   &:last-child {
@@ -485,7 +485,7 @@ export default {
   display: flex;
   justify-content: space-around;
 }
-.ppm-index__list-tag {
+.framework-index__list-tag {
   min-width: 38px;
   text-align: center;
 }

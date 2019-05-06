@@ -62,10 +62,10 @@ export default {
   name: "UCenter",
   mixins: [RouterMixin],
   computed: {
-    ...mapState("ppm/user", {
+    ...mapState("framework/user", {
       info: state => state.info
     }),
-    ...mapState("ppm/sys", {
+    ...mapState("framework/sys", {
       about: state => state.about
     }),
     userName() {
@@ -79,7 +79,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions("ppm/account", ["logout", "unbindWeixin"]),
+    ...mapActions("framework/account", ["logout", "unbindWeixin"]),
     _logout() {
       this.logout({ vm: this, confirm: true });
     },
