@@ -146,7 +146,6 @@ export default {
            * (final:Boolean) 表明pullUp上拉加载是否到了最底部。下拉刷新成功后该值会自动 false。也可传入 false 手动声明不是最后一页
            */
           this.$nextTick(() => {
-            console.log("this.$refs.scroll ", this.$refs.scroll);
             this.$refs.scroll && this.$refs.scroll.update(this.noMore);
             if (val.length) {
               this.$refs.scroll && this.$refs.scroll.enable();
