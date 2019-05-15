@@ -76,7 +76,7 @@ export default {
               })
               .then(() => {
                 this.$router.push({
-                  name: "BindOnAccount",
+                  name: "AccountBinding",
                   query: { corpUserId: err.Content }
                 });
               });

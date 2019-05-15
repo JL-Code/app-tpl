@@ -25,7 +25,7 @@ import Validator from "@/mixins/validator";
 import { mapActions } from "vuex";
 
 export default {
-  name: "BindOnAccount",
+  name: "AccountBinding",
   mixins: [requestContext, Validator],
   data() {
     return {
