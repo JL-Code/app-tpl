@@ -48,7 +48,7 @@ cookies.getAll = function() {
  * @param {String} name cookie name
  */
 cookies.remove = function(name = "default") {
-  return Cookies.remove(`${keyPrefix}${name}`);
+  return Cookies.remove(`${keyPrefix}-${name}`);
 };
 
 export default cookies;
