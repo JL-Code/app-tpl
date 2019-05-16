@@ -31,7 +31,7 @@ export default {
         var appcode = isProduction ? document.body.dataset.code : "PPMWEBAPP";
         var host = isProduction
           ? document.body.dataset.server
-          : "http://meunsc.oicp.net:47941";
+          : process.env.VUE_APP_HOST;
         window.location.href = `${host}/api/work/authorize?appcode=${appcode}`;
       } else {
         this.$notify("请在浏览器环境下使用");
