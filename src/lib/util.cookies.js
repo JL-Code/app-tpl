@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import settings from "@/settings.js";
-
+const keyPrefix = settings.company || "zapsoft";
 const cookies = {};
 
 /**
@@ -14,11 +14,7 @@ cookies.set = function(name = "default", value = "", cookieSetting = {}) {
     expires: 1
   };
   Object.assign(currentCookieSetting, cookieSetting);
-  Cookies.set(
-    `${settings.releases.name}-${settings.releases.version}-${name}`,
-    value,
-    currentCookieSetting
-  );
+  Cookies.set(`${keyPrefix}-${name}`, value, currentCookieSetting);
 };
 
 /**
@@ -27,9 +23,7 @@ cookies.set = function(name = "default", value = "", cookieSetting = {}) {
  * @param {Boolean} parse true => JSON.parse
  */
 cookies.get = function(name = "default", parse = false) {
-  var data = Cookies.get(
-    `${settings.releases.name}-${settings.releases.version}-${name}`
-  );
+  var data = Cookies.get(`${keyPrefix}-${name}`);
   try {
     if (parse && data) {
       return JSON.parse(data);
@@ -54,9 +48,7 @@ cookies.getAll = function() {
  * @param {String} name cookie name
  */
 cookies.remove = function(name = "default") {
-  return Cookies.remove(
-    `${settings.releases.name}-${settings.releases.version}-${name}`
-  );
+  return Cookies.remove(`${keyPrefix}-${name}`);
 };
 
 export default cookies;

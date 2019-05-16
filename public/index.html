@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="@ZapApplication.WebSiteUrl/" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
       name="viewport"
     />
-    <title>app-tpl</title>
+    <title>应用名称</title>
   </head>
-  <body>
-    <noscript>
-      <strong
-        >We're sorry but app-tpl doesn't work properly without JavaScript
-        enabled. Please enable it to continue.</strong
-      >
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+  <!--  @* data-code 企业微信应用编码  （唯一编码，不可变用于获取微信应用相关配置信息，例如应用ID、应用密钥）*@
+  @* data-server 站点步骤地址 eg:http://dev.highzap.com:801/dev*@
+  @* data-authorize 移动端OAuth2.0授权地址，参数appcode是企业微信应用编码*@-->
+  <body 
+    data-code="@ZapSoft.Core.Framework.Constants.[应用编码]"
+    data-server="@ZapApplication.WebSiteUrl"
+    data-authorize="/api/work/authorize?appcode=@ZapSoft.Core.Framework.Constants.[应用编码]"
+  >
+  <div id="app"></div>
+</body>
 </html>

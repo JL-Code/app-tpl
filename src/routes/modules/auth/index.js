@@ -2,7 +2,7 @@ import Login from "@/views/auth/Login";
 import PhoneLogin from "@/views/auth/PhoneLogin";
 import Password from "@/views/auth/Password";
 import WeixinOAuth from "@/views/auth/WeixinOAuth";
-import BindOnAccount from "@/views/auth/BindOnAccount";
+import AccountBinding from "@/views/auth/AccountBinding";
 
 /**
  * @description 身份认证及账号相关
@@ -33,9 +33,9 @@ export default [
     meta: { requiresAuth: false, title: "" }
   },
   {
-    path: "/Auth/BindOnAccount",
-    name: "BindOnAccount",
-    component: BindOnAccount,
+    path: "/Auth/AccountBinding",
+    name: "AccountBinding",
+    component: AccountBinding,
     meta: { requiresAuth: false, title: "" }
   }
 ];
