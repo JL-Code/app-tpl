@@ -1,6 +1,7 @@
 import { version, name } from "../package";
 
 export default {
+  company: "zapsoft",
   constants: {
     TOKEN: "token"
   },
