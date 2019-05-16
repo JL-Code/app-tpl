@@ -17,6 +17,7 @@
 </template>
 
 <script>
+const isProduction = process.env.NODE_ENV === "production";
 export default {
   name: "MoreAuth",
   methods: {
@@ -24,11 +25,14 @@ export default {
       // 引导用户跳转到认证服务器
       if (typeof window) {
         this.$toast.loading({
-          message: "加载中",
+          message: "正在跳转",
           duration: 0
         });
-        // TODO: 后续将服务器信息加入到vuex中 document.body.dataset.server
-        window.location.href = `http://meunsc.oicp.net:47941/api/work/authorize?appcode=PPMWEBAPP`;
+        var appcode = isProduction ? document.body.dataset.code : "PPMWEBAPP";
+        var host = isProduction
+          ? document.body.dataset.server
+          : "http://meunsc.oicp.net:47941";
+        window.location.href = `${host}/api/work/authorize?appcode=${appcode}`;
       } else {
         this.$notify("请在浏览器环境下使用");
       }
